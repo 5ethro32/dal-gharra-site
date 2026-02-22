@@ -3,6 +3,14 @@
 import { useEffect, useRef, ReactNode } from 'react'
 import Link from 'next/link'
 
+/* ── Helpers ── */
+function hexToRgba(hex: string, alpha: number): string {
+  const r = parseInt(hex.slice(1, 3), 16)
+  const g = parseInt(hex.slice(3, 5), 16)
+  const b = parseInt(hex.slice(5, 7), 16)
+  return `rgba(${r}, ${g}, ${b}, ${alpha})`
+}
+
 /* ── Theme config per article ── */
 export interface ArticleTheme {
   accent: string
@@ -76,13 +84,21 @@ export default function ArticleLayout({
   const navRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
-    // Apply theme CSS vars
+    // Apply theme CSS vars — set both --a-* (article-specific) and standard vars
+    // so inherited base styles (::selection, p, strong, etc.) pick up the theme
     const root = document.documentElement
     root.style.setProperty('--a-accent', theme.accent)
     root.style.setProperty('--a-accent-dark', theme.accentDark)
     root.style.setProperty('--a-accent-light', theme.accentLight)
     root.style.setProperty('--a-border', theme.border)
     root.style.setProperty('--a-cream', theme.cream)
+    // Override global variables so all base styles inherit the theme
+    root.style.setProperty('--accent', theme.accent)
+    root.style.setProperty('--accent-dark', theme.accentDark)
+    root.style.setProperty('--accent-light', theme.accentLight)
+    root.style.setProperty('--accent-medium', hexToRgba(theme.accent, 0.15))
+    root.style.setProperty('--border', theme.border)
+    root.style.setProperty('--cream', theme.cream)
 
     return () => {
       root.style.removeProperty('--a-accent')
@@ -90,6 +106,12 @@ export default function ArticleLayout({
       root.style.removeProperty('--a-accent-light')
       root.style.removeProperty('--a-border')
       root.style.removeProperty('--a-cream')
+      root.style.removeProperty('--accent')
+      root.style.removeProperty('--accent-dark')
+      root.style.removeProperty('--accent-light')
+      root.style.removeProperty('--accent-medium')
+      root.style.removeProperty('--border')
+      root.style.removeProperty('--cream')
     }
   }, [theme])
 
@@ -158,13 +180,19 @@ export default function ArticleLayout({
     }
   }, [])
 
-  /* inline theme styles */
+  /* inline theme styles — set both prefixed and standard vars */
   const themeStyle = {
     '--a-accent': theme.accent,
     '--a-accent-dark': theme.accentDark,
     '--a-accent-light': theme.accentLight,
     '--a-border': theme.border,
     '--a-cream': theme.cream,
+    '--accent': theme.accent,
+    '--accent-dark': theme.accentDark,
+    '--accent-light': theme.accentLight,
+    '--accent-medium': hexToRgba(theme.accent, 0.15),
+    '--border': theme.border,
+    '--cream': theme.cream,
   } as React.CSSProperties
 
   return (
@@ -205,7 +233,7 @@ export default function ArticleLayout({
           className="article-hero-watermark"
           style={{
             fontSize: theme.watermarkSize || 'clamp(16rem, 50vw, 36rem)',
-            color: `${theme.accent}08`,
+            color: hexToRgba(theme.accent, 0.022),
           }}
         >
           {theme.watermark}
@@ -353,11 +381,16 @@ export function PhaseItem({
   )
 }
 
-export function CtaSection({ title, subtitle }: { title: string; subtitle: string }) {
+export function CtaSection({ title, subtitle, footerMark }: { title: string; subtitle: string; footerMark?: string }) {
   return (
     <section className="a-cta-section">
       <h2>{title}</h2>
       <p>{subtitle}</p>
+      {footerMark && (
+        <div className="a-footer-mark">
+          <div className="a-footer-logo">{footerMark}</div>
+        </div>
+      )}
     </section>
   )
 }

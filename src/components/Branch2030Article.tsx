@@ -133,6 +133,7 @@ export default function Branch2030Article() {
       <CtaSection
         title="The question isn't whether the technology can do it."
         subtitle="It's whether we choose to invest in that direction."
+        footerMark="branch 2030"
       />
     </ArticleLayout>
   )

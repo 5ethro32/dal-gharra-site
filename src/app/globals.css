@@ -840,7 +840,12 @@ body:has(.article-page) .footer {
 .article-page {
   --bg: #FDFCFB;
   --text: #1a1a1a;
-  --text-muted: #555555;
+  --text-muted: #6b6b6b;
+}
+
+.article-page ::selection {
+  background: var(--accent-medium, rgba(0, 134, 79, 0.15));
+  color: var(--text);
 }
 
 /* ── Article Back Link ── */
@@ -946,7 +951,6 @@ body.nav-visible .article-mini-nav {
   font-weight: 300;
   pointer-events: none;
   line-height: 1;
-  opacity: 0.35;
 }
 
 .article-hero-tag {
@@ -996,7 +1000,6 @@ body.nav-visible .article-mini-nav {
   font-weight: 300;
   max-width: 460px;
   position: relative;
-  line-height: 1.5;
 }
 
 .article-hero-prepared {
@@ -1305,6 +1308,22 @@ body.nav-visible .article-mini-nav {
   max-width: 420px;
   margin: 0 auto 2rem;
   line-height: 1.8;
+}
+
+.a-footer-mark {
+  margin-top: 3.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.a-footer-logo {
+  opacity: 0.3;
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: var(--text);
 }
 
 /* ── Article Reveal Animation ── */
