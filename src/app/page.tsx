@@ -1,7 +1,7 @@
 import ScrollReveal from '@/components/ScrollReveal'
+import HeroParallax from '@/components/HeroParallax'
 import PostCard from '@/components/PostCard'
 import { getAllPosts } from '@/lib/posts'
-import Link from 'next/link'
 
 export default function Home() {
   const recentPosts = getAllPosts().slice(0, 3)
@@ -10,26 +10,29 @@ export default function Home() {
     <>
       {/* Hero */}
       <section className="hero">
-        <p className="hero-tag">Risk &middot; Culture &middot; Transformation</p>
-        <h1>Dall <span className="amp">Gharra</span></h1>
-        <p className="hero-subtitle">
-          Twenty years helping people navigate risk, change, and the systems around them.
-        </p>
-        <p className="hero-prepared">Glasgow</p>
+        <HeroParallax>
+          <p className="hero-tag">Risk &middot; Culture &middot; Transformation</p>
+          <h1>Dall <span className="amp">Gharra</span></h1>
+          <p className="hero-subtitle">
+            Twenty years helping people navigate risk, change, and the systems around them.
+          </p>
+          <p className="hero-prepared">Glasgow</p>
+        </HeroParallax>
         <span className="scroll-hint">scroll<span className="arrow"></span></span>
       </section>
 
-      {/* Divider Band */}
-      <div className="divider-band">
-        <p className="quote">
+      {/* Inline Quote */}
+      <div className="inline-quote">
+        <div className="inline-quote-rule" />
+        <p className="inline-quote-text">
           The best risk work starts with people &mdash; understanding them, supporting them, backing them.
         </p>
       </div>
 
-      {/* Bio */}
+      {/* Journey */}
       <div className="section" id="about">
         <ScrollReveal>
-          <p className="section-label">About</p>
+          <p className="section-label">Journey</p>
         </ScrollReveal>
         <ScrollReveal>
           <h2 className="section-title">
@@ -37,41 +40,97 @@ export default function Home() {
           </h2>
         </ScrollReveal>
         <ScrollReveal>
-          <p>
-            Lloyds Banking Group since 2005. Eight roles across digital banking, credit risk,
-            global sanctions, commercial finance, business banking, and group-wide DE&amp;I
-            strategy. Currently <strong>Risk Manager, Chief Operating Office, Business and
-            Commercial Banking</strong>.
-          </p>
-        </ScrollReveal>
-        <ScrollReveal>
-          <p>
-            I lead CIFD process improvement, governance reviews, and risk coaching for
-            Relationship Managers. Previously embedded risk culture and control frameworks
-            at Lloyds Living. Before that, two years as a Local Support Risk Manager
-            coordinating CIFD activity across Business Commercial Banking.
-          </p>
-        </ScrollReveal>
-        <ScrollReveal>
-          <p>
-            Led the Group&apos;s <strong>Diversity, Equity &amp; Inclusion strategy</strong> with
-            a focus on Race &mdash; budget, communications, and delivery. Built DE&amp;I
-            e-learning for the bank. Delivered heritage month programmes for South Asian and
-            East and Southeast Asian communities.
-          </p>
-        </ScrollReveal>
-        <ScrollReveal>
-          <p>
-            Regular contributor, <strong>Kay Adams show, BBC Radio Scotland</strong>.
-            Chartered Banking Diploma in progress. BSc Fire Risk Engineering,
-            Glasgow Caledonian University.
-          </p>
+          <div className="journey-timeline">
+            <div className="journey-item">
+              <div className="journey-marker">
+                <div className="journey-dot" />
+                <div className="journey-line" />
+              </div>
+              <div>
+                <p className="journey-period">2005</p>
+                <p className="journey-role">Joined Lloyds Banking Group</p>
+                <p className="journey-desc">
+                  Eight roles across digital banking, credit risk, global sanctions,
+                  commercial finance, and business banking.
+                </p>
+              </div>
+            </div>
+
+            <div className="journey-item">
+              <div className="journey-marker">
+                <div className="journey-dot" />
+                <div className="journey-line" />
+              </div>
+              <div>
+                <p className="journey-period">Sanctions &amp; Credit Risk</p>
+                <p className="journey-role">Global Sanctions &amp; Credit Risk</p>
+                <p className="journey-desc">
+                  Deep expertise in financial crime, credit risk frameworks,
+                  and regulatory compliance across the Group.
+                </p>
+              </div>
+            </div>
+
+            <div className="journey-item">
+              <div className="journey-marker">
+                <div className="journey-dot" />
+                <div className="journey-line" />
+              </div>
+              <div>
+                <p className="journey-period">DE&amp;I Strategy</p>
+                <p className="journey-role">Group Diversity, Equity &amp; Inclusion</p>
+                <p className="journey-desc">
+                  Led the Group&apos;s Race strategy &mdash; budget, communications, and delivery.
+                  Built DE&amp;I e-learning. Delivered heritage month programmes for South Asian
+                  and East and Southeast Asian communities.
+                </p>
+              </div>
+            </div>
+
+            <div className="journey-item">
+              <div className="journey-marker">
+                <div className="journey-dot" />
+                <div className="journey-line" />
+              </div>
+              <div>
+                <p className="journey-period">Risk Culture</p>
+                <p className="journey-role">Lloyds Living &amp; Local Support Risk</p>
+                <p className="journey-desc">
+                  Embedded risk culture and control frameworks. Coordinated CIFD activity
+                  across Business &amp; Commercial Banking as Local Support Risk Manager.
+                </p>
+              </div>
+            </div>
+
+            <div className="journey-item">
+              <div className="journey-marker">
+                <div className="journey-dot journey-dot--active" />
+              </div>
+              <div>
+                <p className="journey-period">Present</p>
+                <p className="journey-role">Risk Manager, Chief Operating Office</p>
+                <p className="journey-desc">
+                  Business &amp; Commercial Banking. Leading CIFD process improvement,
+                  governance reviews, and risk coaching for Relationship Managers.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Credential Pills */}
+          <div className="journey-credentials">
+            <span className="credential-pill">BBC Radio Scotland</span>
+            <span className="credential-pill">Chartered Banking Diploma</span>
+            <span className="credential-pill">BSc Fire Risk Engineering</span>
+            <span className="credential-pill">Glasgow Caledonian University</span>
+          </div>
         </ScrollReveal>
       </div>
 
-      {/* Divider Band */}
-      <div className="divider-band">
-        <p className="quote">
+      {/* Inline Quote */}
+      <div className="inline-quote">
+        <div className="inline-quote-rule" />
+        <p className="inline-quote-text">
           The people closest to the risk are the ones who should be shaping the response.
         </p>
       </div>
@@ -93,13 +152,15 @@ export default function Home() {
         </ScrollReveal>
       </div>
 
-      {/* Connect */}
-      <div className="divider-band">
-        <p className="quote">
+      {/* Inline Quote */}
+      <div className="inline-quote">
+        <div className="inline-quote-rule" />
+        <p className="inline-quote-text">
           Interested in how people, culture, and technology are reshaping banking?
         </p>
       </div>
 
+      {/* Connect */}
       <div className="section" id="connect" style={{ textAlign: 'center' }}>
         <ScrollReveal>
           <p className="section-label" style={{ justifyContent: 'center' }}>Connect</p>
