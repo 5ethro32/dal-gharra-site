@@ -4,7 +4,7 @@ import type { PostMeta } from '@/lib/posts'
 export default function PostCard({ post }: { post: PostMeta }) {
   return (
     <Link href={`/writing/${post.slug}`} style={{ textDecoration: 'none' }}>
-      <article className="card" style={{ marginBottom: '1.25rem' }}>
+      <article className="card">
         <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '0.75rem' }}>
           {post.tags.map((tag) => (
             <span key={tag} className="tag">{tag}</span>
