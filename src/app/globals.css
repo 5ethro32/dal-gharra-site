@@ -272,13 +272,31 @@ a:hover {
 
 .journey-timeline {
   margin: 1.5rem 0 2.5rem;
+  position: relative;
+}
+
+/* The vertical line runs through the entire timeline */
+.journey-timeline::before {
+  content: "";
+  position: absolute;
+  left: 25px;
+  top: 10px;
+  bottom: 10px;
+  width: 1px;
+  background: var(--border);
+}
+
+/* Remove inter-reveal margins inside the timeline */
+.journey-timeline > .reveal + .reveal {
+  margin-top: 0;
 }
 
 .journey-item {
   display: grid;
   grid-template-columns: 52px 1fr;
   gap: 1.25rem;
-  padding-bottom: 2.25rem;
+  padding-bottom: 2.5rem;
+  position: relative;
 }
 
 .journey-item:last-child {
@@ -297,9 +315,10 @@ a:hover {
   height: 8px;
   border-radius: 50%;
   border: 1.5px solid var(--accent);
-  background: transparent;
+  background: var(--bg);
   flex-shrink: 0;
-  transition: background 0.3s ease;
+  position: relative;
+  z-index: 1;
 }
 
 .journey-dot--active {
@@ -308,10 +327,7 @@ a:hover {
 }
 
 .journey-line {
-  width: 1px;
-  flex: 1;
-  background: var(--border);
-  margin-top: 0.5rem;
+  display: none;
 }
 
 .journey-period {
@@ -320,26 +336,24 @@ a:hover {
   text-transform: uppercase;
   color: var(--accent);
   font-weight: 500;
-  margin-bottom: 0.15rem;
+  margin-bottom: 0.25rem;
 }
 
 .journey-role {
   font-family: var(--font-heading);
-  font-size: clamp(1.05rem, 2vw, 1.2rem);
+  font-size: clamp(1.1rem, 2.5vw, 1.3rem);
   font-weight: 400;
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.4rem;
   color: var(--text);
   line-height: 1.3;
 }
 
 .journey-desc {
-  font-size: 0.88rem;
+  font-size: 0.9rem;
   color: var(--text-muted);
-  line-height: 1.6;
+  line-height: 1.65;
   margin-bottom: 0;
 }
-
-/* Journey items — each is its own reveal element */
 
 /* ── Credential Pills ── */
 
@@ -348,7 +362,7 @@ a:hover {
   flex-wrap: wrap;
   gap: 0.5rem;
   margin-top: 2rem;
-  justify-content: flex-start;
+  justify-content: center;
 }
 
 .credential-pill {
@@ -374,7 +388,7 @@ a:hover {
 /* ── Inline Quote (editorial) ── */
 
 .inline-quote {
-  max-width: 720px;
+  max-width: 800px;
   margin: 0 auto;
   padding: 5rem 2rem;
   text-align: center;
@@ -390,13 +404,21 @@ a:hover {
 
 .inline-quote-text {
   font-family: var(--font-heading);
-  font-size: clamp(1.4rem, 4vw, 2rem);
+  font-size: clamp(1.5rem, 4vw, 2.15rem);
   font-style: italic;
   font-weight: 300;
   color: var(--text);
   line-height: 1.5;
   margin-bottom: 0;
   letter-spacing: -0.01em;
+}
+
+.inline-quote-text::before {
+  content: "\201C";
+}
+
+.inline-quote-text::after {
+  content: "\201D";
 }
 
 /* ── Content Container ── */
@@ -986,11 +1008,11 @@ a:hover {
   .journey-item {
     grid-template-columns: 40px 1fr;
     gap: 1rem;
-    padding-bottom: 1.75rem;
+    padding-bottom: 2rem;
   }
 
-  .journey-credentials {
-    justify-content: center;
+  .journey-timeline::before {
+    left: 19px;
   }
 
   .inline-quote {
