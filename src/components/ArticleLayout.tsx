@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, ReactNode, CSSProperties } from 'react'
+import { useEffect, useRef, ReactNode } from 'react'
 
 /* ── Theme config per article ── */
 export interface ArticleTheme {
@@ -158,13 +158,13 @@ export default function ArticleLayout({
   }, [])
 
   /* inline theme styles */
-  const themeStyle: CSSProperties & Record<string, string> = {
+  const themeStyle = {
     '--a-accent': theme.accent,
     '--a-accent-dark': theme.accentDark,
     '--a-accent-light': theme.accentLight,
     '--a-border': theme.border,
     '--a-cream': theme.cream,
-  } as CSSProperties
+  } as React.CSSProperties
 
   return (
     <div className="article-page" style={themeStyle}>
