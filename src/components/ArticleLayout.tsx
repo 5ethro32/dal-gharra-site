@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef, ReactNode } from 'react'
+import Link from 'next/link'
 
 /* ── Theme config per article ── */
 export interface ArticleTheme {
@@ -182,6 +183,12 @@ export default function ArticleLayout({
           transition: 'width 0.1s linear',
         }}
       />
+
+      {/* Back to site */}
+      <Link href="/writing" className="article-back-link" aria-label="Back to writing">
+        <span className="article-back-arrow">&larr;</span>
+        <span className="article-back-text">DG</span>
+      </Link>
 
       {/* Mini nav */}
       <nav ref={navRef} className="article-mini-nav" aria-label="Jump navigation">

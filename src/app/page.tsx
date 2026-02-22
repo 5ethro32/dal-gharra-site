@@ -27,7 +27,7 @@ export default function Home() {
       </div>
 
       {/* Bio */}
-      <div className="section">
+      <div className="section" id="about">
         <ScrollReveal>
           <p className="section-label">About</p>
         </ScrollReveal>
@@ -100,7 +100,7 @@ export default function Home() {
         </p>
       </div>
 
-      <div className="section" style={{ textAlign: 'center' }}>
+      <div className="section" id="connect" style={{ textAlign: 'center' }}>
         <ScrollReveal>
           <p className="section-label" style={{ justifyContent: 'center' }}>Connect</p>
         </ScrollReveal>

@@ -18,12 +18,12 @@ export default function Nav() {
   return (
     <nav className={`nav ${scrolled ? 'scrolled' : ''}`}>
       <Link href="/" className="nav-name">
-        Dall Gharra
+        DG
       </Link>
       <ul className="nav-links">
-        <li><Link href="/">Home</Link></li>
+        <li><a href="/#about">About</a></li>
         <li><Link href="/writing">Writing</Link></li>
-        <li><a href="mailto:dgharra@hotmail.co.uk">Contact</a></li>
+        <li><a href="/#connect">Connect</a></li>
       </ul>
     </nav>
   )
