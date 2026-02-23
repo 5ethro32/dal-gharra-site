@@ -12,7 +12,7 @@ export default function Footer() {
       </p>
       <div className="footer-social">
         <a
-          href="https://www.linkedin.com/in/dall-gharra"
+          href="https://www.linkedin.com/in/dall-gharra-39306b11a/"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="LinkedIn"
