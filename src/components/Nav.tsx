@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
+import DGLogo from './DGLogo'
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false)
@@ -17,8 +18,11 @@ export default function Nav() {
 
   return (
     <nav className={`nav ${scrolled ? 'scrolled' : ''}`}>
-      <Link href="/" className="nav-name">
-        DG
+      <Link href="/" className="nav-name" aria-label="Dall Gharra — Home">
+        <span className="nav-logo-icon">
+          <DGLogo size={26} />
+        </span>
+        <span className="nav-logo-text">DG</span>
       </Link>
       <ul className="nav-links">
         <li><a href="/#about">About</a></li>
